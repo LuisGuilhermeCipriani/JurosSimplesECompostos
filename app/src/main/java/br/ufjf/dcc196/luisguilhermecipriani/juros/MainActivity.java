@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void simplesClick(View view){
         try{
-            Float valorPresente = Float.parseFloat(editTextValorPresente.getText().toString());
+            Double valorPresente = Double.parseDouble(editTextValorPresente.getText().toString());
             Intent simplesIntent = new Intent(getApplicationContext(), SimplesActivity.class);
             simplesIntent.putExtra("valorPresente", valorPresente);
             startActivity(simplesIntent);
@@ -30,7 +30,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void compostosClick(View view){
-        Intent compostosIntent = new Intent(getApplicationContext(), CompostosActivity.class);
-        startActivity(compostosIntent);
+        try{
+            Double valorPresente = Double.parseDouble(editTextValorPresente.getText().toString());
+            Intent compostosIntent = new Intent(getApplicationContext(), CompostosActivity.class);
+            compostosIntent.putExtra("valorPresente", valorPresente);
+            startActivity(compostosIntent);
+        } catch (NumberFormatException ex){
+            editTextValorPresente.selectAll();
+            editTextValorPresente.requestFocus();
+        }
     }
 }

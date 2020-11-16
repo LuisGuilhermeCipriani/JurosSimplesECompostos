@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class SimplesActivity extends AppCompatActivity {
     TextView textViewValorPresente;
-    Float valorPresente;
+    Double valorPresente;
     EditText editTextTaxa;
     EditText editTextPeriodos;
     TextView textViewValorFuturo;
@@ -24,7 +24,7 @@ public class SimplesActivity extends AppCompatActivity {
         textViewValorPresente = findViewById(R.id.textViewValorPresente);
         textViewValorFuturo = findViewById(R.id.textViewValorFuturo);
         Bundle extras = getIntent().getExtras();
-        valorPresente = extras.getFloat("valorPresente");
+        valorPresente = extras.getDouble("valorPresente");
         textViewValorPresente.setText(valorPresente.toString());
         editTextTaxa = findViewById(R.id.editTextTaxa);
         editTextTaxa.setText("0.1");
@@ -34,9 +34,9 @@ public class SimplesActivity extends AppCompatActivity {
     }
 
     public void calcularClick(View view){
-        Float taxa = Float.parseFloat(editTextTaxa.getText().toString());
+        Double taxa = Double.parseDouble(editTextTaxa.getText().toString());
         Integer periodos = Integer.parseInt(editTextPeriodos.getText().toString());
-        Float valorFuturo = valorPresente*(1 + taxa*periodos);
+        Double valorFuturo = valorPresente*(1 + taxa*periodos);
         textViewValorFuturo.setText(valorFuturo.toString());
     }
 
