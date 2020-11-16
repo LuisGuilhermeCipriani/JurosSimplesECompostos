@@ -1,5 +1,6 @@
 package br.ufjf.dcc196.luisguilhermecipriani.juros;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class CompostosActivity extends AppCompatActivity {
     TextView textViewValorFuturo;
     Button buttonCalcular;
     Button buttonRetornar;
+    Double valorFuturo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +37,14 @@ public class CompostosActivity extends AppCompatActivity {
     public void calcularClick(View view){
         Double taxa = Double.parseDouble(editTextTaxa.getText().toString());
         Integer periodos = Integer.parseInt(editTextPeriodos.getText().toString());
-        Double valorFuturo = valorPresente* Math.pow((1.0 + taxa), periodos);
+        valorFuturo = valorPresente* Math.pow((1.0 + taxa), periodos);
         textViewValorFuturo.setText(valorFuturo.toString());
     }
 
     public void retornarClick(View view){
+        Intent resultado = new Intent();
+        resultado.putExtra("valorFuturo", valorFuturo);
+        setResult(RESULT_OK, resultado);
         finish();
     }
 }
