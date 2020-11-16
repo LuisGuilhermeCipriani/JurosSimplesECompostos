@@ -12,14 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Valor Presente"
+        android:text="@string/textViewValorPresente"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="16dp" />
 
     <EditText
         android:id="@+id/editTextValorPresente"
@@ -32,7 +33,8 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewValorPresente"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValorPresente" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewValorPresente"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/buttonSimples"
@@ -40,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:onClick="simplesClick"
-        android:text="Juros Simples"
+        android:text="@string/buttonSimples"
         app:layout_constraintEnd_toStartOf="@+id/buttonCompostos"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="compostosClick"
-        android:text="Juros Compostos"
+        android:text="@string/buttonCompostos"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonSimples"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

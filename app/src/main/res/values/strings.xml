@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Juros</string>
+    <string name="textViewValorPresente">Valor Presente</string>
+    <string name="buttonSimples">Juros Simples</string>
+    <string name="buttonCompostos">Juros Compostos</string>
+    <string name="textView3">Valor Futuro por Juros Simples:</string>
+    <string name="textViewValorFuturo">YYYY</string>
+    <string name="textViewPeriodos">Períodos:</string>
+    <string name="textViewTaxaJuros">Taxa de Juros:</string>
+    <string name="textView8ValorPresente">Valor Presente:</string>
+    <string name="textViewValor_Presente">XXXX</string>
+    <string name="buttonCalcular">Calcular</string>
+    <string name="buttonRetornar">Retornar</string>
+    <string name="textViewValorFuturoJurosComposto">Valor Futuro por Juros Compostos:</string>
+    <string name="textView_ValorFuturo">YYYY</string>
+    <string name="textView_Periodos">Períodos:</string>
+    <string name="textView_TaxaJuros">Taxa de Juros:</string>
+    <string name="textViewValorPresente_">Valor Presente:</string>
+    <string name="textViewValorPresenteVariavel">XXXX</string>
+    <string name="button_Calcular">Calcular</string>
+    <string name="button_Retornar">Retornar</string>
 </resources>
