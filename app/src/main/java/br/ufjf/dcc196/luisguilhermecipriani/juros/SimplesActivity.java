@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class SimplesActivity extends AppCompatActivity {
     TextView textViewValorPresente;
     Double valorPresente;
@@ -18,6 +21,7 @@ public class SimplesActivity extends AppCompatActivity {
     Button buttonCalcular;
     Button buttonRetornar;
     Double valorFuturo;
+    Locale locale = new Locale("pt", "BR");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class SimplesActivity extends AppCompatActivity {
         Double taxa = Double.parseDouble(editTextTaxa.getText().toString());
         Integer periodos = Integer.parseInt(editTextPeriodos.getText().toString());
         valorFuturo = valorPresente*(1 + taxa*periodos);
-        textViewValorFuturo.setText(valorFuturo.toString());
+        textViewValorFuturo.setText(NumberFormat.getCurrencyInstance(locale).format(valorFuturo));
     }
 
     public void retornarClick(View view){

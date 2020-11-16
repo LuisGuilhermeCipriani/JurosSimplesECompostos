@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_JUROS_SIMPLES = 1;
     public static final int REQUEST_JUROS_COMPOSTOS = 2;
 
     EditText editTextValorPresente;
     TextView textViewResultado;
+    Locale locale = new Locale("pt", "BR");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }else if(requestCode == REQUEST_JUROS_COMPOSTOS){
                 valorFuturo = data.getExtras().getDouble("valorFuturo");
             }
-            textViewResultado.setText(valorFuturo.toString());
+            textViewResultado.setText(NumberFormat.getCurrencyInstance(locale).format(valorFuturo));
         }
     }
 }
