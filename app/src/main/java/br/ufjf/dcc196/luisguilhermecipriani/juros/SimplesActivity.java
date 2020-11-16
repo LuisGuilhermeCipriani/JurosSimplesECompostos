@@ -22,6 +22,7 @@ public class SimplesActivity extends AppCompatActivity {
     Button buttonRetornar;
     Double valorFuturo;
     Locale locale = new Locale("pt", "BR");
+    Double taxaJuros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +33,24 @@ public class SimplesActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         valorPresente = extras.getDouble("valorPresente");
         textViewValorPresente.setText(valorPresente.toString());
+        taxaJuros = extras.getDouble("taxaJuros");
         editTextTaxa = findViewById(R.id.editTextTaxa);
-        editTextTaxa.setText("0.1");
+        editTextTaxa.setText(Double.toString(taxaJuros));
         editTextPeriodos = findViewById(R.id.editTextPeriodos);
         editTextPeriodos.setText("10");
-
     }
 
     public void calcularClick(View view){
-        Double taxa = Double.parseDouble(editTextTaxa.getText().toString());
+        taxaJuros = Double.parseDouble(editTextTaxa.getText().toString());
         Integer periodos = Integer.parseInt(editTextPeriodos.getText().toString());
-        valorFuturo = valorPresente*(1 + taxa*periodos);
+        valorFuturo = valorPresente*(1 + taxaJuros *periodos);
         textViewValorFuturo.setText(NumberFormat.getCurrencyInstance(locale).format(valorFuturo));
     }
 
     public void retornarClick(View view){
         Intent resultado = new Intent();
         resultado.putExtra("valorFuturo", valorFuturo);
+        resultado.putExtra("taxaJurosSimples", taxaJuros);
         setResult(RESULT_OK, resultado);
         finish();
     }

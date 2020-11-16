@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextValorPresente;
     TextView textViewResultado;
     Locale locale = new Locale("pt", "BR");
+    Double taxaJuros = 0.1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             Double valorPresente = Double.parseDouble(editTextValorPresente.getText().toString());
             Intent simplesIntent = new Intent(getApplicationContext(), SimplesActivity.class);
             simplesIntent.putExtra("valorPresente", valorPresente);
+            simplesIntent.putExtra("taxaJuros", taxaJuros);
             startActivityForResult(simplesIntent, REQUEST_JUROS_SIMPLES);
         } catch (NumberFormatException ex){
             editTextValorPresente.selectAll();
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             Double valorPresente = Double.parseDouble(editTextValorPresente.getText().toString());
             Intent compostosIntent = new Intent(getApplicationContext(), CompostosActivity.class);
             compostosIntent.putExtra("valorPresente", valorPresente);
+            compostosIntent.putExtra("taxaJuros", taxaJuros);
             startActivityForResult(compostosIntent, REQUEST_JUROS_COMPOSTOS);
         } catch (NumberFormatException ex){
             editTextValorPresente.selectAll();
@@ -59,8 +62,10 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             if(requestCode == REQUEST_JUROS_SIMPLES){
                 valorFuturo = data.getExtras().getDouble("valorFuturo");
+                taxaJuros = data.getExtras().getDouble("taxaJurosSimples");
             }else if(requestCode == REQUEST_JUROS_COMPOSTOS){
                 valorFuturo = data.getExtras().getDouble("valorFuturo");
+                taxaJuros = data.getExtras().getDouble("taxaJurosCompostos");
             }
             textViewResultado.setText(NumberFormat.getCurrencyInstance(locale).format(valorFuturo));
         }
